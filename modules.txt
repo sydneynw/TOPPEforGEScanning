@@ -1,0 +1,7 @@
+Total number of unique cores
+4
+wavfile_name	duration(us)	hasRF?	hasDAQ?
+tipdown.mod	1700	1	0
+tipdown.mod	4000	1	0
+readout.mod	5200	0	1
+readout.mod	2900	0	1
