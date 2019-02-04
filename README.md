@@ -6,7 +6,7 @@ Please refer to the [TOPPE Github](https://github.com/toppeMRI/) and the origina
 For a spin-warp double-echo SPGR acquisition for B0 field mapping with 2.3 ms echo time difference. <\br>
 64x64x84 matrix, FOV = 24 cm x 24 cm x 33.6 cm. <br/>
 **Scanning**<br/>      
--tipdown.mod               -   hard pulse<br/>
+-tipdown.mod               -   hard pulse
 -readout.mod               -   spin warp readout for 64 RO resoltuion (PE resolution determined by scanloop.txt) <br/>
 -scanloop.txt              -   double-echo SPGR for 64 PE steps and 84 slices <br/>
 -timing.txt                -   3T Discovery MR timings<br/>
