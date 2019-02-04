@@ -37,20 +37,21 @@ d = double(d);
 
 % get flat portion of readout
 [rf,gx,gy,gz,desc,paramsint16,paramsfloat] = toppe.readmod(readout);
-nramp = 1;                          % see mat2mod.m
+nramp = 6;                          % see mat2mod.m
 %nbeg = paramsint16(3) + nramp;      % beginning of data on readout 
-nbeg = paramsint16(1) + nramp;      % beginning of data on readout 04.02.19
+nbeg = paramsint16(2) + nramp;      % beginning of data on readout 04.02.19
 
 if paramsint16(2)                   
 %if paramsint16(4)                   %04.02.19
 %    nx = paramsint16(4);            % number of acquired data samples per TR
-    nx = paramsint16(2);            % number of acquired data samples per TR
+               % number of acquired data samples per TR
     %decimation = paramsint16(10);
-    if paramsint16(10)
-        decimation=paramsint16(10);
+    if paramsint16(8)
+        decimation=paramsint16(8);
     else
         decimation=1;
     end
+    nx = paramsint16(2)*decimation;
     d = d(nbeg:(nbeg+nx-1),:,:,:,:);% [nx*125/oprbw ny nz ncoils nechoes]
 else
     nx=size(d,1);                   %paramsint16(2);
