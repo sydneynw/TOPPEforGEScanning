@@ -9,6 +9,7 @@ function [ims imsos draw] = recon_syd(pfile,readout,varargin)
 %| Edit: 10.26.2017 Added number of frequency encodes as input
 %| Edit: 02.01.2018 Adapted to use loadpfile.m for toppe.e V2
 %| Edit: 07.20.2018 Adapted to use loadpfile.m for DV26 (using Jon's recon3dft.m)
+%| Edit: 04.02.2019 Adapted to use for toppev2b (using Jon's recon3dft.m)
 
 %| Inputs:
 %| [pfile]             [1]  P*7 file and directory/location
@@ -35,12 +36,21 @@ d = permute(d,[1 5 3 2 4]);         % [ndat ny nz ncoils nechoes]
 d = double(d);
 
 % get flat portion of readout
-[desc,rho,theta,gx,gy,gz,paramsint16,paramsfloat] = readmod(readout);
-nramp = 0;                          % see mat2mod.m
-nbeg = paramsint16(3) + nramp;      % beginning of data on readout 
-if paramsint16(4)
-    nx = paramsint16(4);            % number of acquired data samples per TR
-    decimation = paramsint16(10);
+[rf,gx,gy,gz,desc,paramsint16,paramsfloat] = toppe.readmod(readout);
+nramp = 1;                          % see mat2mod.m
+%nbeg = paramsint16(3) + nramp;      % beginning of data on readout 
+nbeg = paramsint16(1) + nramp;      % beginning of data on readout 04.02.19
+
+if paramsint16(2)                   
+%if paramsint16(4)                   %04.02.19
+%    nx = paramsint16(4);            % number of acquired data samples per TR
+    nx = paramsint16(2);            % number of acquired data samples per TR
+    %decimation = paramsint16(10);
+    if paramsint16(10)
+        decimation=paramsint16(10);
+    else
+        decimation=1;
+    end
     d = d(nbeg:(nbeg+nx-1),:,:,:,:);% [nx*125/oprbw ny nz ncoils nechoes]
 else
     nx=size(d,1);                   %paramsint16(2);
