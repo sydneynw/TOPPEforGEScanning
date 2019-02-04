@@ -21,5 +21,5 @@ For a spin-warp double-echo SPGR acquisition for B0 field mapping with 2.3 ms ec
 -recon_syd.m : reconstructs multi-coil cartesian k-space data<br/>
 -recon_syd_coilcombine.m : reconstructs complex multi-coil cartesian k-space data given sensitivity maps<br/>
 -sMapCombine.m : linearly combines complex sensitivity maps and multi-coil data (Tianrui Luo)<br/>
--sense-map.mat : complex sensitivity map from 8-Rx coil using body coil reference, downsampled to 64x32x84x8 <br/>  
+-sense-map.mat : complex sensitivity map from 8-Rx coil using body coil reference, downsampled to 64x32x84x8
 -P02048.7 : sample raw data P-file acquired with FBIRN phantom and SPGR sequence for practice recon w/readout.mod 
